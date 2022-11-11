@@ -1,13 +1,7 @@
-import { CartItemAction, CartItemActionType } from '../actions/cart-item.action';
+import { createReducer, on } from '@ngrx/store';
+import { addItem } from '../actions/cart-item.action';
 import Cart from '../models/cart.model';
 
 const initialState: Cart = new Cart();
 
-export const cartReducer = (state: Cart = initialState, action: CartItemAction) => {
-    switch (action.type) {
-        case CartItemActionType.addItem:
-            return state.addProduct(action.payload);
-        default:
-            return state;
-    }
-};
+export const cartReducer = createReducer(initialState, on(addItem, (state, product) => state.addItem(product)));

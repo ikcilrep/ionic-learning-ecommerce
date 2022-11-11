@@ -8,7 +8,7 @@ export default class Cart {
         return this.items.reduce((count, item) => count + item.amount, 0);
     }
 
-    public addProduct(product: Product): Cart {
+    public addItem(product: Product): Cart {
         const productIndex = this.items.findIndex((item) => item.product.id === product.id);
         if (productIndex !== -1) {
             return new Cart(this.copyItemsWithIncrementedProductAmount(productIndex));
