@@ -3,6 +3,15 @@
     <ion-title>
       Blank
     </ion-title>
+    <ion-buttons slot="primary">
+      <ion-tab-button>
+        <ion-icon name="cart"></ion-icon>
+        <ion-label>Koszyk</ion-label>
+        <ion-badge color="primary" *ngIf="(cart$ | async)?.numberOfItems > 0;">
+          {{(cart$ | async)?.numberOfItems}}
+        </ion-badge>
+      </ion-tab-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 

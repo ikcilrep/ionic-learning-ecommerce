@@ -8,7 +8,6 @@ import { HomePageRoutingModule } from './home-routing.module';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductComponent } from './product/product.component';
 
-
 @NgModule({
   imports: [
     CommonModule,
@@ -18,4 +17,5 @@ import { ProductComponent } from './product/product.component';
   ],
   declarations: [HomePage, ProductListComponent, ProductComponent]
 })
+
 export class HomePageModule { }
