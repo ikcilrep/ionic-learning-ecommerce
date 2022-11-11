@@ -2,10 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Product } from '../db';
-import { incrementProductAmount, subtractProductAmount } from '../store/actions/cart-item.action';
 import AppState from '../store/models/app-state.models';
-import CartItem from '../store/models/cart-item.model';
 import Cart from '../store/models/cart.model';
 
 @Component({
