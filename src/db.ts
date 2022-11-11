@@ -14,16 +14,19 @@ class Product {
     description: string;
     price: number;
     imageUrl: string;
+    id: number;
 }
 
 const products: Array<Product> = [
     {
         name: 'Rower', description: 'Pojeździsz sobie', price: 1200,
-        imageUrl: 'https://www.carrefour.pl/images/product/350x350/rower-29-mtb-cayman-s3omeh.jpg'
+        imageUrl: 'https://www.carrefour.pl/images/product/350x350/rower-29-mtb-cayman-s3omeh.jpg',
+        id: 0,
     },
     {
         name: 'Lizak', description: 'Zjesz sobie', price: 0.2,
-        imageUrl: 'https://www.manufaktura-cukierkow.pl/assets/images/7/lizak-duzy-teczowy-manufaktura-cukierkow-56f1ad5d.png'
+        imageUrl: 'https://www.manufaktura-cukierkow.pl/assets/images/7/lizak-duzy-teczowy-manufaktura-cukierkow-56f1ad5d.png',
+        id: 1,
     }
 ];
 
