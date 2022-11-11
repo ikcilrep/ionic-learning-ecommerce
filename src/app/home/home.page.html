@@ -4,7 +4,7 @@
       Blank
     </ion-title>
     <ion-buttons slot="primary">
-      <ion-tab-button>
+      <ion-tab-button (click)="goToCart()">
         <ion-icon name="cart"></ion-icon>
         <ion-label>Koszyk</ion-label>
         <ion-badge color="primary" *ngIf="(cart$ | async)?.numberOfItems > 0;">
