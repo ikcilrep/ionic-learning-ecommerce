@@ -1,4 +1,4 @@
-import { Product } from 'src/db';
+import { Product } from 'src/app/db';
 import CartItem from './cart-item.model';
 
 export default class Cart {

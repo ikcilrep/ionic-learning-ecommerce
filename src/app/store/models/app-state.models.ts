@@ -1,5 +1,5 @@
 import Cart from './cart.model';
 
-export interface AppState {
+export default interface AppState {
     readonly cart: Cart;
 }

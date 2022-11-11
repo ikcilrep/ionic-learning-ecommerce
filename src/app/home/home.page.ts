@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { AppState } from '../store/models/app-state.models';
+import AppState from '../store/models/app-state.models';
 import Cart from '../store/models/cart.model';
 
 @Component({
