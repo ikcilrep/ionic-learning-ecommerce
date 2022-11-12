@@ -7,8 +7,8 @@
       <ion-tab-button (click)="goToCart()">
         <ion-icon name="cart"></ion-icon>
         <ion-label>Koszyk</ion-label>
-        <ion-badge color="primary" *ngIf="(cart$ | async)?.numberOfItems > 0;">
-          {{(cart$ | async)?.numberOfItems}}
+        <ion-badge color="primary" *ngIf="(numberOfItems$ | async) > 0;">
+          {{(numberOfItems$ | async)}}
         </ion-badge>
       </ion-tab-button>
     </ion-buttons>

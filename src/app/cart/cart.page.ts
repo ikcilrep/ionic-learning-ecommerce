@@ -3,7 +3,8 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import AppState from '../store/models/app-state.models';
-import Cart from '../store/models/cart.model';
+import CartItem from '../store/models/cart-item.model';
+import { selectCartItems, selectCartTotalPrice } from '../store/reducers/cart.selector';
 
 @Component({
   selector: 'app-cart',
@@ -11,12 +12,14 @@ import Cart from '../store/models/cart.model';
   styleUrls: ['./cart.page.scss'],
 })
 export class CartPage implements OnInit {
-  cart$: Observable<Cart>;
+  cartItems$: Observable<CartItem[]>;
+  totalPrice$: Observable<number>;
 
   constructor(private store: Store<AppState>, private router: Router) { }
 
   ngOnInit() {
-    this.cart$ = this.store.select((state) => state.cart);
+    this.cartItems$ = this.store.select(selectCartItems);
+    this.totalPrice$ = this.store.select(selectCartTotalPrice);
   }
 
   goToHome(): void {

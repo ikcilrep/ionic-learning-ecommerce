@@ -5,23 +5,26 @@
 </ion-header>
 
 <ion-content>
-  <app-cart-item [item]="item" *ngFor="let item of (cart$ | async).items">
-  </app-cart-item>
-  <div *ngIf="(cart$ | async).price > 0" id="price">
-    <h1>
-      Do zapłaty
-    </h1>
-    <h2>
-      {{(cart$ | async).displayablePrice}}
-    </h2>
-  </div>
+  <ng-container *ngIf="cartItems$ | async as items">
+    <app-cart-item [item]="item" *ngFor="let item of items">
+    </app-cart-item>
+    <div *ngIf="(totalPrice$ | async) > 0" id="price">
+      <h1>
+        Do zapłaty
+      </h1>
+      <h2>
+        {{(totalPrice$ | async).toFixed(2)}}zł
+      </h2>
+    </div>
 
-  <div *ngIf="(cart$ | async).items.length === 0" id="no-products">
-    <h1>
-      Koszyk jest pusty.
-    </h1>
-    <ion-button (click)="goToHome()">
-      Przejdź do sklepu
-    </ion-button>
-  </div>
+    <div *ngIf="(totalPrice$ | async) === 0" id="no-products">
+      <h1>
+        Koszyk jest pusty.
+      </h1>
+      <ion-button (click)="goToHome()">
+        Przejdź do sklepu
+      </ion-button>
+    </div>
+
+  </ng-container>
 </ion-content>
