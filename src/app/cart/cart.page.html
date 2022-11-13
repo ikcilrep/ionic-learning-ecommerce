@@ -6,7 +6,7 @@
 
 <ion-content>
   <ng-container *ngIf="cartItems$ | async as items">
-    <app-cart-item [item]="item" *ngFor="let item of items">
+    <app-cart-item [item]="item" *ngFor="let item of items; trackBy: trackByItem">
     </app-cart-item>
     <div *ngIf="(totalPrice$ | async) > 0" id="price">
       <h1>

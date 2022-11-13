@@ -17,6 +17,10 @@ export class CartPage implements OnInit {
 
   constructor(private store: Store<AppState>, private router: Router) { }
 
+  trackByItem(_index: number, item: CartItem) {
+    return item.product.id;
+  }
+
   ngOnInit() {
     this.cartItems$ = this.store.select(selectCartItems);
     this.totalPrice$ = this.store.select(selectCartTotalPrice);
