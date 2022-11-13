@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
-import { ActionsSubject, select, Store } from '@ngrx/store';
+import { ActionsSubject, Store } from '@ngrx/store';
 import StorageService from 'src/app/providers/storage.service';
-import { concatMap, mergeMap, tap, withLatestFrom } from 'rxjs/operators';
+import { mergeMap, tap } from 'rxjs/operators';
 import { loadFailure, loadSuccess } from '../actions/cart.action';
 import AppState from '../models/app-state.models';
 import { selectCartState } from '../reducers/cart.selector';
-import { of, scheduled } from 'rxjs';
 
 @Injectable()
 export class CartEffects {
@@ -14,10 +13,11 @@ export class CartEffects {
         () => this.actions$.pipe(ofType('[Cart] Load Cart'),
             mergeMap(async () => {
                 const cartString = await this.storageService.get('cart');
-                if (cartString === undefined) {
+                if (cartString === null) {
                     return loadFailure();
                 }
-                return loadSuccess(JSON.parse(cartString));
+                const cart = JSON.parse(cartString);
+                return loadSuccess(cart);
             })
         ));
 
