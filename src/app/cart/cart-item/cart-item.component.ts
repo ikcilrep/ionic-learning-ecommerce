@@ -19,12 +19,19 @@ export class CartItemComponent implements OnInit {
 
   constructor(private store: Store<AppState>) { }
 
-  incrementProductAmount(item: CartItem): void {
-    this.store.dispatch(incrementProductAmount(item.product));
+  get displayablePrice(): string {
+    return (this.item.product.price * this.item.amount).toFixed(2) + 'zł';
   }
 
-  subtractProductAmount(product: Product, amountToSubtract: number): void {
-    this.store.dispatch(subtractProductAmount({ product, amountToSubtract }));
+  incrementProductAmount(): void {
+    this.store.dispatch(incrementProductAmount(this.item.product));
+  }
+
+  subtractProductAmount(amountToSubtract: number): void {
+    this.store.dispatch(subtractProductAmount({
+      product: this.item.product,
+      amountToSubtract
+    }));
   }
 
   ngOnInit() {

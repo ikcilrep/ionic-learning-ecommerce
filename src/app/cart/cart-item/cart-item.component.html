@@ -3,18 +3,18 @@
     <img alt="Silhouette of mountains" src={{item.product.imageUrl}} />
   </ion-thumbnail>
   <ion-label>
-    {{item.product.name}} {{item.displayablePrice}}
+    {{item.product.name}} {{displayablePrice}}
   </ion-label>
-  <ion-button color="medium" fill="clear" (click)="subtractProductAmount(item.product, 1)">
+  <ion-button color="medium" fill="clear" (click)="subtractProductAmount(1)">
     <ion-icon name="remove-circle" slot="icon-only"></ion-icon>
   </ion-button>
 
   {{ item.amount }}
 
-  <ion-button color="medium" fill="clear" (click)="incrementProductAmount(item)">
+  <ion-button color="medium" fill="clear" (click)="incrementProductAmount()">
     <ion-icon name="add-circle" slot="icon-only"></ion-icon>
   </ion-button>
-  <ion-button color="danger" fill="clear" (click)="subtractProductAmount(item.product, item.amount)">
+  <ion-button color="danger" fill="clear" (click)="subtractProductAmount(this.item.amount)">
     <ion-icon name="trash" slot="icon-only"></ion-icon>
   </ion-button>
 </ion-item>
