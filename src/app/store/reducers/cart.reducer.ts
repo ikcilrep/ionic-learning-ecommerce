@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { incrementProductAmount, subtractProductAmount } from '../actions/cart.action';
+import { incrementProductAmount, loadFailure, loadSuccess, subtractProductAmount } from '../actions/cart.action';
 import CartFeatureState from '../models/cart-feature-state.model';
 
 const initialState: CartFeatureState = { items: [] };
@@ -33,4 +33,7 @@ export const cartReducer = createReducer(initialState,
         }
 
         return { items: itemsWithoutProduct };
-    }));
+    }),
+    on(loadSuccess, (_state, cart) => cart),
+    on(loadFailure, (state) => state)
+);

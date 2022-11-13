@@ -25,6 +25,7 @@ export class CartItemComponent implements OnInit {
 
   incrementProductAmount(): void {
     this.store.dispatch(incrementProductAmount(this.item.product));
+    this.store.dispatch({ type: '[Cart] Save Cart' });
   }
 
   subtractProductAmount(amountToSubtract: number): void {
@@ -32,6 +33,7 @@ export class CartItemComponent implements OnInit {
       product: this.item.product,
       amountToSubtract
     }));
+    this.store.dispatch({ type: '[Cart] Save Cart' });
   }
 
   ngOnInit() {
