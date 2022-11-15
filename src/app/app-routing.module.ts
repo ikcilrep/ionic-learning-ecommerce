@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import IsLoggedIn from './guards/is-logged-in';
-import IsNotLoggedIn from './guards/is-not-logged-in';
+import IsLoggedIn from './guards/is-logged-in.guard';
+import IsNotLoggedIn from './guards/is-not-logged-in.guard';
 
 const routes: Routes = [
   {
@@ -21,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: 'cart',
-    loadChildren: () => import('./cart/cart.module').then( m => m.CartPageModule)
+    loadChildren: () => import('./cart/cart.module').then(m => m.CartPageModule)
   },
 ];
 

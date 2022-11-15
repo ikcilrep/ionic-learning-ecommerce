@@ -1,9 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { incrementProductAmount } from 'src/app/store/actions/cart.action';
-import AppState from 'src/app/store/models/app-state.models';
+import AppState from 'src/app/models/app-state.models';
 import { Product } from 'src/app/db';
-import StorageService from 'src/app/providers/storage.service';
+import { incrementProductAmount } from 'src/app/actions/cart.actions';
 
 @Component({
   selector: 'app-product',
@@ -12,7 +11,7 @@ import StorageService from 'src/app/providers/storage.service';
 })
 export class ProductComponent implements OnInit {
   @Input() product!: Product;
-  constructor(private store: Store<AppState>, private storageService: StorageService) { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() { }
 

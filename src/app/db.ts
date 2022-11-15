@@ -1,5 +1,5 @@
-import Product from './store/models/product.model';
-import User from './store/models/user.model';
+import Product from './models/product.model';
+import User from './models/user.model';
 
 const users: Array<User> = [
     { email: 'ikcilrep@outlook.com', password: 'Kotek123!' },

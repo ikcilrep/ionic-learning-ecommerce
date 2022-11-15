@@ -1,11 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { incrementProductAmount, subtractProductAmount } from 'src/app/store/actions/cart.action';
-import AppState from 'src/app/store/models/app-state.models';
-import CartItem from 'src/app/store/models/cart-item.model';
-import Cart from 'src/app/store/models/cart-feature-state.model';
-import Product from 'src/app/store/models/product.model';
+import AppState from 'src/app/models/app-state.models';
+import CartItem from 'src/app/models/cart-item.model';
+import Cart from 'src/app/models/cart-feature-state.model';
+import { incrementProductAmount, subtractProductAmount } from 'src/app/actions/cart.actions';
 
 @Component({
   selector: 'app-cart-item',

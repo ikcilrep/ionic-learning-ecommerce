@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import AppState from '../store/models/app-state.models';
-import CartItem from '../store/models/cart-item.model';
-import { selectCartItems, selectCartTotalPrice } from '../store/reducers/cart.selector';
+import AppState from '../models/app-state.models';
+import CartItem from '../models/cart-item.model';
+import * as fromCart from '../selectors/cart.selectors';
 
 @Component({
   selector: 'app-cart',
@@ -22,8 +22,8 @@ export class CartPage implements OnInit {
   }
 
   ngOnInit() {
-    this.cartItems$ = this.store.select(selectCartItems);
-    this.totalPrice$ = this.store.select(selectCartTotalPrice);
+    this.cartItems$ = this.store.select(fromCart.selectCartItems);
+    this.totalPrice$ = this.store.select(fromCart.selectCartTotalPrice);
     this.store.dispatch({ type: '[Cart] Load Cart' });
   }
 
