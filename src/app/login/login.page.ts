@@ -3,6 +3,9 @@ import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import StorageService from '../providers/storage.service';
 import { users } from '../db';
+import { Store } from '@ngrx/store';
+import { State } from '../reducers';
+import * as LoginActions from '../actions/login.actions';
 
 
 @Component({
@@ -14,15 +17,18 @@ export class LoginPage implements OnInit {
   email: string;
   password: string;
 
-  constructor(private toastController: ToastController, private router: Router, private storageService: StorageService) { }
+  constructor(private toastController: ToastController, private router: Router, private storageService: StorageService,
+    private store: Store<State>) { }
 
   ngOnInit() {
+    this.store.dispatch(LoginActions.logInIfRemembered());
   }
 
   logIn(): void {
     const user = users.find((u) => u.email === this.email);
     if (user !== undefined && user.password === this.password) {
-      this.storageService.set('isLoggedIn', true);
+      this.store.dispatch(LoginActions.logIn({ email: user.email }));
+      this.store.dispatch(LoginActions.saveLoginData());
       this.router.navigate(['/home']);
     } else {
       this.presentLoginFailedToast();
