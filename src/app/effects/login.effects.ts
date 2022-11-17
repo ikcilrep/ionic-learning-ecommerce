@@ -21,11 +21,13 @@ export class LoginEffects {
 
       mergeMap(async () => {
         const email = await this.storageService.get('email');
-        if (email === null) { return EMPTY; }
-        return LoginActions.logIn({ email });
+        if (email === null) {
+          return LoginActions.logInFailure();
+        }
+        return LoginActions.logInSuccess({ email });
       }
       ));
-  }, { dispatch: false });
+  });
 
 
   saveLoginData$ = createEffect(() => this.actions$.pipe(ofType(LoginActions.saveLoginData),
