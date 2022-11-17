@@ -8,10 +8,11 @@ import StorageService from '../providers/storage.service';
 import { Store } from '@ngrx/store';
 import { State } from '../reducers';
 
+
 @Injectable()
 export class CartEffects {
   loadCart$ = createEffect(
-    () => this.actions$.pipe(ofType('[Cart] Load Cart'),
+    () => this.actions$.pipe(ofType(CartActions.loadCart),
       mergeMap(async () => {
         const cartString = await this.storageService.get('cart');
         if (cartString === null) {
@@ -25,7 +26,7 @@ export class CartEffects {
   saveCart$ = createEffect(
     () =>
       this.actions$.pipe(
-        ofType('[Cart] Save Cart'),
+        ofType(CartActions.saveCart),
         concatLatestFrom(_action => this.store.select(selectCartState)),
         tap(async ([_action, cart]) => {
           await this.storageService.set('cart', JSON.stringify(cart));
@@ -33,7 +34,6 @@ export class CartEffects {
       ),
     { dispatch: false }
   );
-
 
   constructor(private actions$: Actions, private storageService: StorageService, private store: Store<State>) { }
 }

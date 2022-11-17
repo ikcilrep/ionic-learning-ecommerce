@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 
 import { mergeMap, tap } from 'rxjs/operators';
-import { EMPTY } from 'rxjs';
 import * as LoginActions from '../actions/login.actions';
 import * as fromLoginData from '../selectors/login.selectors';
 import StorageService from '../providers/storage.service';
@@ -13,8 +12,6 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class LoginEffects {
-
-
   logInIfRemembered$ = createEffect(() => {
     return this.actions$.pipe(
       ofType(LoginActions.logInIfRemembered),

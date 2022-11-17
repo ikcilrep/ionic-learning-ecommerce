@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import AppState from '../models/app-state.models';
 import CartFeatureState from '../models/cart-feature-state.model';
 import * as fromCart from '../selectors/cart.selectors';
-import * as LoginActions from '../actions/login.actions';
 
 @Component({
   selector: 'app-home',
@@ -20,7 +19,6 @@ export class HomePage implements OnInit {
   ngOnInit(): void {
     this.numberOfItems$ = this.store.select(fromCart.selectNumberOfItems);
     this.cart$ = this.store.select(fromCart.selectCartState);
-    this.store.dispatch({ type: '[Cart] Load Cart' });
   }
 
   goToCart(): void {

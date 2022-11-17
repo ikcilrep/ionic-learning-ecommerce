@@ -12,3 +12,7 @@ export const subtractProductAmount = createAction('[Cart Item Component] Subtrac
 export const loadSuccess = createAction('[Storage Service] Cart Loaded Success', props<fromCart.State>());
 
 export const loadFailure = createAction('[Storage Service] Cart Loading Failure');
+
+export const loadCart = createAction('[App Component] Load Cart');
+
+export const saveCart = createAction('[Cart] Save Cart');

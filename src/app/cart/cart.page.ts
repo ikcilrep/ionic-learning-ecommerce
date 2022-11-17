@@ -24,7 +24,6 @@ export class CartPage implements OnInit {
   ngOnInit() {
     this.cartItems$ = this.store.select(fromCart.selectCartItems);
     this.totalPrice$ = this.store.select(fromCart.selectCartTotalPrice);
-    this.store.dispatch({ type: '[Cart] Load Cart' });
   }
 
   goToHome(): void {

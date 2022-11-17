@@ -17,6 +17,6 @@ export class ProductComponent implements OnInit {
 
   addToCart(): void {
     this.store.dispatch(CartActions.addProductToCart(this.product));
-    this.store.dispatch({ type: '[Cart] Save Cart' });
+    this.store.dispatch(CartActions.saveCart());
   }
 }
