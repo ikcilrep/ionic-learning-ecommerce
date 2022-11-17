@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import AppState from 'src/app/models/app-state.models';
 import { Product } from 'src/app/db';
-import { incrementProductAmount } from 'src/app/actions/cart.actions';
+import * as CartActions from 'src/app/actions/cart.actions';
 
 @Component({
   selector: 'app-product',
@@ -16,7 +16,7 @@ export class ProductComponent implements OnInit {
   ngOnInit() { }
 
   addToCart(): void {
-    this.store.dispatch(incrementProductAmount(this.product));
+    this.store.dispatch(CartActions.addProductToCart(this.product));
     this.store.dispatch({ type: '[Cart] Save Cart' });
   }
 }

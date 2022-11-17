@@ -1,5 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { incrementProductAmount, loadFailure, loadSuccess, subtractProductAmount } from '../actions/cart.actions';
+import * as LoginActions from '../actions/cart.actions';
+import { Product } from '../db';
 import CartItem from '../models/cart-item.model';
 
 export const cartFeatureKey = 'cart';
@@ -12,20 +13,23 @@ export const initialState: State = {
   items: []
 };
 
-export const reducer = createReducer(initialState,
-  on(incrementProductAmount, (state, product) => {
-    const itemIndex = state.items.findIndex((item) => item.product.id === product.id);
-    if (itemIndex !== -1) {
-      return {
-        items: [...state.items.filter((_, index) => index !== itemIndex),
-        { product, amount: state.items[itemIndex].amount + 1 }]
-      };
-    }
+const incrementProductAmount = (state: State, product: Product) => {
+  const itemIndex = state.items.findIndex((item) => item.product.id === product.id);
+  if (itemIndex !== -1) {
     return {
-      items: [...state.items, { product, amount: 1 }]
+      items: [...state.items.filter((_, index) => index !== itemIndex),
+      { product, amount: state.items[itemIndex].amount + 1 }]
     };
-  }),
-  on(subtractProductAmount, (state, { product, amountToSubtract }) => {
+  }
+  return {
+    items: [...state.items, { product, amount: 1 }]
+  };
+};
+
+export const reducer = createReducer(initialState,
+  on(LoginActions.incrementProductAmount, incrementProductAmount),
+  on(LoginActions.addProductToCart, incrementProductAmount),
+  on(LoginActions.subtractProductAmount, (state, { product, amountToSubtract }) => {
     const itemIndex = state.items.findIndex((item) => item.product.id === product.id);
     if (itemIndex === -1) {
       throw new Error();
@@ -42,6 +46,6 @@ export const reducer = createReducer(initialState,
 
     return { items: itemsWithoutProduct };
   }),
-  on(loadSuccess, (_state, cart) => cart),
-  on(loadFailure, (state) => state)
+  on(LoginActions.loadSuccess, (_state, cart) => cart),
+  on(LoginActions.loadFailure, (state) => state)
 );

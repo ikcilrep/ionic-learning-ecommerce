@@ -22,9 +22,9 @@ export class LoginEffects {
       mergeMap(async () => {
         const email = await this.storageService.get('email');
         if (email === null) {
-          return LoginActions.logInFailure();
+          return LoginActions.autoLogInFailure();
         }
-        return LoginActions.logInSuccess({ email });
+        return LoginActions.autoLogInSuccess({ email });
       }
       ));
   });

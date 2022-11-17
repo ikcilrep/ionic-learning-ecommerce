@@ -1,18 +1,22 @@
 import { createAction, props } from '@ngrx/store';
 
 export const logInIfRemembered = createAction(
-  '[Login] Log In If Remembered'
+  '[App Component] Log In If Remembered'
 );
 
+
+export const autoLogInSuccess = createAction(
+  '[Storage Service] Auto Log In Success', props<{ email: string }>()
+);
+
+export const autoLogInFailure = createAction(
+  '[Storage Service] Auto Log In Failure'
+);
 
 export const logInSuccess = createAction(
-  '[Login] Logged In Succssfully', props<{ email: string }>()
-);
-
-export const logInFailure = createAction(
-  '[Login] Log In Failure'
+  '[Auth API] Log In Success', props<{ email: string }>()
 );
 
 export const saveLoginData = createAction(
-  '[Login] Save Data'
+  '[Login Page] Save Data'
 );

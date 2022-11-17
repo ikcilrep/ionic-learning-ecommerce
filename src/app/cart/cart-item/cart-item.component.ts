@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import AppState from 'src/app/models/app-state.models';
 import CartItem from 'src/app/models/cart-item.model';
 import Cart from 'src/app/models/cart-feature-state.model';
-import { incrementProductAmount, subtractProductAmount } from 'src/app/actions/cart.actions';
+import * as CartActions from 'src/app/actions/cart.actions';
 
 @Component({
   selector: 'app-cart-item',
@@ -23,12 +23,12 @@ export class CartItemComponent implements OnInit {
   }
 
   incrementProductAmount(): void {
-    this.store.dispatch(incrementProductAmount(this.item.product));
+    this.store.dispatch(CartActions.incrementProductAmount(this.item.product));
     this.store.dispatch({ type: '[Cart] Save Cart' });
   }
 
   subtractProductAmount(amountToSubtract: number): void {
-    this.store.dispatch(subtractProductAmount({
+    this.store.dispatch(CartActions.subtractProductAmount({
       product: this.item.product,
       amountToSubtract
     }));

@@ -19,5 +19,6 @@ export const reducer = createReducer(
   initialState,
 
   on(LoginActions.logInSuccess, (_state, { email }) => ({ isLoggedIn: true, isLoaded: true, email })),
-  on(LoginActions.logInFailure, (_state) => ({ email: null, isLoggedIn: false, isLoaded: true })),
+  on(LoginActions.autoLogInSuccess, (_state, { email }) => ({ isLoggedIn: true, isLoaded: true, email })),
+  on(LoginActions.autoLogInFailure, (_state) => ({ email: null, isLoggedIn: false, isLoaded: true })),
 );

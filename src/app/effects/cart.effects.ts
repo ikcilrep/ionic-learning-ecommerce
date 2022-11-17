@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 
 import { mergeMap, tap } from 'rxjs/operators';
-import { loadFailure, loadSuccess } from '../actions/cart.actions';
+import * as CartActions from '../actions/cart.actions';
 import { selectCartState } from '../selectors/cart.selectors';
 import StorageService from '../providers/storage.service';
 import { Store } from '@ngrx/store';
@@ -15,10 +15,10 @@ export class CartEffects {
       mergeMap(async () => {
         const cartString = await this.storageService.get('cart');
         if (cartString === null) {
-          return loadFailure();
+          return CartActions.loadFailure();
         }
         const cart = JSON.parse(cartString);
-        return loadSuccess(cart);
+        return CartActions.loadSuccess(cart);
       })
     ));
 
