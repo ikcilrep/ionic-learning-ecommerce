@@ -21,7 +21,6 @@ export class HomePage implements OnInit {
     this.numberOfItems$ = this.store.select(fromCart.selectNumberOfItems);
     this.cart$ = this.store.select(fromCart.selectCartState);
     this.store.dispatch({ type: '[Cart] Load Cart' });
-    this.store.dispatch(LoginActions.logInIfRemembered());
   }
 
   goToCart(): void {

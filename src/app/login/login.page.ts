@@ -13,21 +13,17 @@ import * as LoginActions from '../actions/login.actions';
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
   email: string;
   password: string;
 
   constructor(private toastController: ToastController, private router: Router, private storageService: StorageService,
     private store: Store<State>) { }
 
-  ngOnInit() {
-    this.store.dispatch(LoginActions.logInIfRemembered());
-  }
-
   logIn(): void {
     const user = users.find((u) => u.email === this.email);
     if (user !== undefined && user.password === this.password) {
-      this.store.dispatch(LoginActions.logIn({ email: user.email }));
+      this.store.dispatch(LoginActions.logInSuccess({ email: user.email }));
       this.store.dispatch(LoginActions.saveLoginData());
       this.router.navigate(['/home']);
     } else {

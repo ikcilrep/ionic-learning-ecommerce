@@ -5,8 +5,12 @@ export const logInIfRemembered = createAction(
 );
 
 
-export const logIn = createAction(
-  '[Login] Log In', props<{ email: string }>()
+export const logInSuccess = createAction(
+  '[Login] Logged In Succssfully', props<{ email: string }>()
+);
+
+export const logInFailure = createAction(
+  '[Login] Log In Failure'
 );
 
 export const saveLoginData = createAction(

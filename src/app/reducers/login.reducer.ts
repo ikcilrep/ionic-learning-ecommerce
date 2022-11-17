@@ -5,20 +5,19 @@ export const loginFeatureKey = 'login';
 
 export interface State {
   readonly isLoggedIn: boolean;
+  readonly isLoaded: boolean;
   readonly email: string | null;
 }
 
 export const initialState: State = {
   isLoggedIn: false,
+  isLoaded: false,
   email: null
 };
 
 export const reducer = createReducer(
   initialState,
 
-  on(LoginActions.logIn, (_state, { email }) => {
-    console.log('Logging in');
-    console.log(email);
-    return ({ isLoggedIn: true, email });
-  }),
+  on(LoginActions.logInSuccess, (_state, { email }) => ({ isLoggedIn: true, isLoaded: true, email })),
+  on(LoginActions.logInFailure, (_state) => ({ email: null, isLoggedIn: false, isLoaded: true })),
 );
