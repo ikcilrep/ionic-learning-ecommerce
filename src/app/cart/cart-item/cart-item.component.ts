@@ -11,10 +11,8 @@ import * as CartActions from 'src/app/actions/cart.actions';
   templateUrl: './cart-item.component.html',
   styleUrls: ['./cart-item.component.scss'],
 })
-export class CartItemComponent implements OnInit {
+export class CartItemComponent {
   @Input() item!: CartItem;
-
-  cart$: Observable<Cart>;
 
   constructor(private store: Store<AppState>) { }
 
@@ -34,10 +32,4 @@ export class CartItemComponent implements OnInit {
     }));
     this.store.dispatch(CartActions.saveCart());
   }
-
-  ngOnInit() {
-    this.cart$ = this.store.select((state) => state.cart);
-  }
-
-
 }
