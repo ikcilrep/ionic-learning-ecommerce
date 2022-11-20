@@ -47,6 +47,38 @@ describe('Cart Reducer', () => {
     });
   });
 
+  describe('addProductToCart', () => {
+    it('should return a new cart instance', () => {
+      const product = products[0];
+      const result = reducer(initialState, CartActions.addProductToCart(product));
+
+      expect(result).not.toBe(initialState);
+    });
+
+    it('should create a new item, if product not present in the cart', () => {
+      const product = products[0];
+      const result = reducer(initialState, CartActions.addProductToCart(product));
+
+      expect(result.items.length).toBeGreaterThan(0);
+    });
+
+    it('should create a new item with amount 1, if product not present in the cart', () => {
+      const product = products[0];
+      const result = reducer(initialState, CartActions.addProductToCart(product));
+
+      expect(result.items[0].amount).toBe(1);
+    });
+
+    it('should increase a product\'s amount by 1, if present in the cart', () => {
+      const product = products[0];
+      const item = { product, amount: 1 };
+      const cartWithProduct = { items: [item] };
+      const result = reducer(cartWithProduct, CartActions.addProductToCart(product));
+
+      expect(result.items[0].amount).toBe(item.amount + 1);
+    });
+  });
+
   describe('subtractProductAmount', () => {
     let product: Product;
     let item: CartItem;
