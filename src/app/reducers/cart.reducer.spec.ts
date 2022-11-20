@@ -13,7 +13,7 @@ describe('Cart Reducer', () => {
     });
   });
 
-  describe('increment product amount', () => {
+  describe('incrementProductAmount', () => {
     it('should return a new cart instance', () => {
       const product = products[0];
       const result = reducer(initialState, incrementProductAmount(product));
