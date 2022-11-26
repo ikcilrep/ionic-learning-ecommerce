@@ -2,7 +2,6 @@ import { TestBed, waitForAsync } from '@angular/core/testing';
 import { UrlTree } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
-import { of } from 'rxjs';
 import { State } from '../reducers';
 import { selectLoginState } from '../selectors/login.selectors';
 import IsLoggedIn from './is-logged-in.guard';
