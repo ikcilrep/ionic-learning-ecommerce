@@ -39,4 +39,8 @@ describe('IsLoggedIn', () => {
             });
         });
     });
+
+    afterEach(() => {
+        mockStore.resetSelectors();
+    });
 });

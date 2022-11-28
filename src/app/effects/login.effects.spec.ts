@@ -1,9 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
-import { provideMockStore } from '@ngrx/store/testing';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { Observable, of } from 'rxjs';
 import { autoLogInFailure, autoLogInSuccess, logInIfRemembered, saveLoginData } from '../actions/login.actions';
 import StorageService from '../providers/storage.service';
+import { State } from '../reducers';
 import { selectLoginState } from '../selectors/login.selectors';
 
 import { LoginEffects } from './login.effects';
@@ -12,6 +13,8 @@ describe('LoginEffects', () => {
   let actions$: Observable<any>;
   let effects: LoginEffects;
   let storageServiceSpyObj: any;
+  let mockStore: MockStore<State>;
+
   const email = 'user@example.com';
   beforeEach(() => {
     storageServiceSpyObj = jasmine.createSpyObj('StorageService', ['set', 'get']);
@@ -19,12 +22,13 @@ describe('LoginEffects', () => {
       providers: [
         LoginEffects,
         provideMockActions(() => actions$),
-        provideMockStore({ selectors: [{ selector: selectLoginState, value: { email, isLoggedIn: true, isLoaded: true } }] }),
+        provideMockStore(),
         { provide: StorageService, useValue: storageServiceSpyObj }
       ]
     });
 
     effects = TestBed.inject(LoginEffects);
+    mockStore = TestBed.inject(MockStore<State>);
   });
 
   it('should be created', () => {
@@ -53,11 +57,16 @@ describe('LoginEffects', () => {
 
   describe('saveLoginData', () => {
     it('should save the provided email in storage', (done: DoneFn) => {
+      mockStore.overrideSelector(selectLoginState, { email, isLoaded: true, isLoggedIn: true });
       actions$ = of(saveLoginData());
       effects.saveLoginData$.subscribe(() => {
         expect(storageServiceSpyObj.set).toHaveBeenCalledOnceWith('email', email);
         done();
       });
     });
+  });
+
+  afterEach(() => {
+    mockStore.resetSelectors();
   });
 });
