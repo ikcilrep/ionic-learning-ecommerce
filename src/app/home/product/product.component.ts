@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import AppState from 'src/app/models/app-state.models';
 import { Product } from 'src/app/db';
 import * as CartActions from 'src/app/actions/cart.actions';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -11,12 +12,16 @@ import * as CartActions from 'src/app/actions/cart.actions';
 })
 export class ProductComponent implements OnInit {
   @Input() product!: Product;
-  constructor(private store: Store<AppState>) { }
+  constructor(private store: Store<AppState>, private router: Router) { }
 
   ngOnInit() { }
 
   addToCart(): void {
     this.store.dispatch(CartActions.addProductToCart(this.product));
     this.store.dispatch(CartActions.saveCart());
+  }
+
+  goToProductPage(): void {
+    this.router.navigate(['/home/product-page', this.product.id.toString()]);
   }
 }

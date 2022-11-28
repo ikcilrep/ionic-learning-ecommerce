@@ -6,11 +6,15 @@ const routes: Routes = [
   {
     path: '',
     component: HomePage,
-  }
+  },
+  {
+    path: 'product-page/:id',
+    loadChildren: () => import('./product-page/product-page.module').then(m => m.ProductPagePageModule)
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class HomePageRoutingModule {}
+export class HomePageRoutingModule { }

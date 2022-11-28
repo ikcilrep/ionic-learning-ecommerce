@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{product.name}}</ion-title>
+    <ion-buttons slot="primary">
+      <ion-tab-button (click)="goToCart()">
+        <ion-icon name="cart"></ion-icon>
+        <ion-label>Koszyk</ion-label>
+        <ion-badge color="primary" *ngIf="(numberOfItems$ | async) > 0;">
+          {{(numberOfItems$ | async)}}
+        </ion-badge>
+      </ion-tab-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <img src={{product.imageUrl}} />
+    <h2>
+      {{product.price}}zł
+    </h2>
+    <ion-card>
+      <ion-card-content>
+        {{product.description}}
+
+      </ion-card-content>
+    </ion-card>
+    <ion-button>
+      Dodaj do koszyka
+    </ion-button>
+    <ion-item-divider></ion-item-divider>
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Opinia</ion-label>
+        <ion-textarea placeholder="Daj znać, co myślisz o tym produkcie"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-button slot="end">
+          Opublikuj
+          <ion-icon slot="end" name="send"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
