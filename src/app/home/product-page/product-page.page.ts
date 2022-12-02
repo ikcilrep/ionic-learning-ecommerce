@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { Product, products } from 'src/app/db';
+import { products } from 'src/app/db';
 import { State } from 'src/app/reducers';
 import * as fromCart from 'src/app/selectors/cart.selectors';
 import * as CartActions from 'src/app/actions/cart.actions';
+import Product from 'src/app/models/product.model';
 
 @Component({
   selector: 'app-product-page',

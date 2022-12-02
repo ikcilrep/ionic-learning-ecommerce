@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import * as LoginActions from '../actions/cart.actions';
-import { Product } from '../db';
 import CartItem from '../models/cart-item.model';
+import Product from '../models/product.model';
 
 export const cartFeatureKey = 'cart';
 

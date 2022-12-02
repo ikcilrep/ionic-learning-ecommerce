@@ -7,6 +7,7 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductComponent } from './product/product.component';
+import { CommentFormComponent } from '../src/app/home/product-page/comment-form/comment-form.component';
 
 @NgModule({
   imports: [

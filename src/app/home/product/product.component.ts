@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import AppState from 'src/app/models/app-state.models';
-import { Product } from 'src/app/db';
+import AppState from 'src/app/models/app-state.model';
 import * as CartActions from 'src/app/actions/cart.actions';
 import { Router } from '@angular/router';
+import Product from 'src/app/models/product.model';
 
 @Component({
   selector: 'app-product',

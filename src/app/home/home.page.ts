@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import AppState from '../models/app-state.models';
+import AppState from '../models/app-state.model';
 import CartFeatureState from '../models/cart-feature-state.model';
 import * as fromCart from '../selectors/cart.selectors';
 

@@ -1,4 +1,4 @@
-import { Product } from 'src/app/db';
+import Product from './product.model';
 
 export default interface CartItem {
     readonly product: Product;

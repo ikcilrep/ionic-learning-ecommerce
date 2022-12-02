@@ -1,4 +1,5 @@
 import Product from './models/product.model';
+import ProductComment from './models/user-comment.model';
 import User from './models/user.model';
 
 const users: Array<User> = [
@@ -20,4 +21,19 @@ const products: Array<Product> = [
     }
 ];
 
-export { users, products, Product, User };
+const productComments: Array<ProductComment> = [
+    {
+        userId: 0,
+        text: 'Dobre!',
+        productId: 0,
+        createdAt: new Date('2022-05-27'),
+    },
+    {
+        userId: 1,
+        text: 'Słaby rower! Buuuu!',
+        productId: 0,
+        createdAt: new Date('2022-05-27'),
+    },
+];
+
+export { users, products, productComments as comments };

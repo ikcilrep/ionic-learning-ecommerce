@@ -1,8 +1,9 @@
 import * as CartActions from '../actions/cart.actions';
 import { reducer, initialState, State } from './cart.reducer';
-import { Product, products } from '../db';
+import { products } from '../db';
 import { waitForAsync } from '@angular/core/testing';
 import CartItem from '../models/cart-item.model';
+import Product from '../models/product.model';
 
 describe('Cart Reducer', () => {
   describe('an unknown action', () => {

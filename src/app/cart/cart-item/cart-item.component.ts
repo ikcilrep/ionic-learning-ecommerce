@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
-import AppState from 'src/app/models/app-state.models';
+import AppState from 'src/app/models/app-state.model';
 import CartItem from 'src/app/models/cart-item.model';
 import * as CartActions from 'src/app/actions/cart.actions';
 
