@@ -15,7 +15,7 @@ export class CommentContentComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.user = db.users[this.comment.userId];
+    this.user = db.users.find((user) => user.id === this.comment.userId);
   }
 
 }

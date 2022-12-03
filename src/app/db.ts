@@ -3,8 +3,8 @@ import ProductComment from './models/user-comment.model';
 import User from './models/user.model';
 
 const users: Array<User> = [
-    { email: 'ikcilrep@outlook.com', password: 'Kotek123!' },
-    { email: 'panszymon1@gmail.com', password: 'Kotek1234!' },
+    { email: 'ikcilrep@outlook.com', password: 'Kotek123!', id: 0 },
+    { email: 'panszymon1@gmail.com', password: 'Kotek1234!', id: 1 },
 ];
 
 
