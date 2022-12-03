@@ -23,10 +23,9 @@
         <ion-card>
             <ion-card-content>
                 {{product.description}}
-
             </ion-card-content>
         </ion-card>
-        <ion-button>
+        <ion-button (click)="addToCart()">
             Dodaj do koszyka
         </ion-button>
         <app-comment-form></app-comment-form>
