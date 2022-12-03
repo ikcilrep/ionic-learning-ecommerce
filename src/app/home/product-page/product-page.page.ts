@@ -26,8 +26,9 @@ export class ProductPagePage implements OnInit {
     this.numberOfItems$ = this.store.select(fromCart.selectNumberOfItems);
   }
 
-  addToCart() {
+  addToCart(): void {
     this.store.dispatch(CartActions.addProductToCart(this.product));
+    this.store.dispatch(CartActions.saveCart());
   }
 
   goToCart() {
