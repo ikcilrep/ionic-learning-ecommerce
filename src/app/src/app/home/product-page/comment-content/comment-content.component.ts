@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import UserComment from 'src/app/models/user-comment.model';
+import ProductComment from 'src/app/models/product-comment.model';
 import User from 'src/app/models/user.model';
 import * as db from 'src/app/db';
 
@@ -9,7 +9,7 @@ import * as db from 'src/app/db';
   styleUrls: ['./comment-content.component.scss'],
 })
 export class CommentContentComponent implements OnInit {
-  @Input() comment!: UserComment;
+  @Input() comment!: ProductComment;
   user: User;
 
   constructor() { }

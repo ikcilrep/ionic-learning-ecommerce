@@ -1,5 +1,5 @@
 import Product from './models/product.model';
-import ProductComment from './models/user-comment.model';
+import ProductComment from './models/product-comment.model';
 import User from './models/user.model';
 
 const users: Array<User> = [

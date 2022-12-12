@@ -1,14 +1,14 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import * as db from 'src/app/db';
-import UserComment from 'src/app/models/user-comment.model';
+import ProductComment from 'src/app/models/product-comment.model';
 
 import { CommentContentComponent } from './comment-content.component';
 
 describe('CommentContentComponent', () => {
   let component: CommentContentComponent;
   let fixture: ComponentFixture<CommentContentComponent>;
-  const comment: UserComment = db.comments[0];
+  const comment: ProductComment = db.comments[0];
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({

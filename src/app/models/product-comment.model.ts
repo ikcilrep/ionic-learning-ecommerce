@@ -1,4 +1,4 @@
-export default interface UserComment {
+export default interface ProductComment {
     productId: number;
     userId: number;
     text: string;

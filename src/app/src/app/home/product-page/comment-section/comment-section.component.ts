@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import * as db from 'src/app/db';
-import UserComment from 'src/app/models/user-comment.model';
+import ProductComment from 'src/app/models/product-comment.model';
 
 @Component({
   selector: 'app-comment-section',
@@ -9,7 +9,7 @@ import UserComment from 'src/app/models/user-comment.model';
 })
 export class CommentSectionComponent implements OnInit {
   @Input() productId!: number;
-  comments: UserComment[];
+  comments: ProductComment[];
 
   constructor() { }
 
