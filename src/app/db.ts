@@ -23,12 +23,14 @@ const products: Array<Product> = [
 
 const productComments: Array<ProductComment> = [
     {
+        id: '0',
         userId: 0,
         text: 'Dobre!',
         productId: 0,
         createdAt: new Date('2022-05-27'),
     },
     {
+        id: '1',
         userId: 1,
         text: 'Słaby rower! Buuuu!',
         productId: 0,

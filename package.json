@@ -31,6 +31,7 @@
     "@ngrx/effects": "^14.3.2",
     "@ngrx/store": "^14.3.2",
     "@ngrx/store-devtools": "^14.3.2",
+    "axios": "^1.2.1",
     "ionicons": "^6.0.3",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",

@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import * as db from 'src/app/db';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { loadComments } from 'src/app/actions/comment.actions';
 import ProductComment from 'src/app/models/product-comment.model';
+import { selectProductComments } from 'src/app/selectors/comment.selectors';
 
 @Component({
   selector: 'app-comment-list',
@@ -9,13 +12,13 @@ import ProductComment from 'src/app/models/product-comment.model';
 })
 export class CommentListComponent implements OnInit {
   @Input() productId!: number;
-  comments: ProductComment[];
+  comments$: Observable<ProductComment[]>;
 
-  constructor() { }
+  constructor(private store: Store) { }
 
   ngOnInit() {
-    this.comments = db.comments.filter((comment) => comment.productId === this.productId);
-    this.comments.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+    this.store.dispatch(loadComments({ productId: this.productId }));
+    this.comments$ = this.store.select(selectProductComments(this.productId));
   }
 
 }

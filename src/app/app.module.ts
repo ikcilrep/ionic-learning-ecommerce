@@ -15,11 +15,14 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { CartEffects } from './effects/cart.effects';
 import { LoginEffects } from './effects/login.effects';
+import { CommentEffects } from './effects/comment.effects';
+
+export const serverAddress = 'https://forlearningforselfmaker.azurewebsites.net';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, IonicStorageModule.forRoot(), FormsModule,
-    EffectsModule.forRoot([CartEffects, LoginEffects]),
+    EffectsModule.forRoot([CartEffects, LoginEffects, CommentEffects]),
     StoreModule.forRoot(reducers, { metaReducers }), !environment.production ? StoreDevtoolsModule.instrument() : []],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

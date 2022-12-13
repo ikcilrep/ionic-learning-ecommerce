@@ -3,4 +3,5 @@ export default interface ProductComment {
     userId: number;
     text: string;
     createdAt: Date;
+    id: string;
 }
