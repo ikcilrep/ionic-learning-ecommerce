@@ -3,11 +3,11 @@ import * as db from 'src/app/db';
 import ProductComment from 'src/app/models/product-comment.model';
 
 @Component({
-  selector: 'app-comment-section',
-  templateUrl: './comment-section.component.html',
-  styleUrls: ['./comment-section.component.scss'],
+  selector: 'app-comment-list',
+  templateUrl: './comment-list.component.html',
+  styleUrls: ['./comment-list.component.scss'],
 })
-export class CommentSectionComponent implements OnInit {
+export class CommentListComponent implements OnInit {
   @Input() productId!: number;
   comments: ProductComment[];
 

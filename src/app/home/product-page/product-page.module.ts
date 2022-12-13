@@ -8,11 +8,11 @@ import { ProductPagePageRoutingModule } from './product-page-routing.module';
 
 import { ProductPagePage } from './product-page.page';
 import { CommentFormComponent } from 'src/app/src/app/home/product-page/comment-form/comment-form.component';
-import { CommentSectionComponent } from 'src/app/src/app/home/product-page/comment-section/comment-section.component';
+import { CommentListComponent } from 'src/app/src/app/home/product-page/comment-list/comment-list.component';
 import { CommentComponent } from 'src/app/src/app/home/product-page/comment/comment.component';
 
 @NgModule({
-  declarations: [ProductPagePage, CommentFormComponent, CommentSectionComponent, CommentComponent],
+  declarations: [ProductPagePage, CommentFormComponent, CommentListComponent, CommentComponent],
   imports: [
     CommonModule,
     FormsModule,

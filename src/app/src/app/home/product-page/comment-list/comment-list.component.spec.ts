@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { CommentSectionComponent } from './comment-section.component';
+import { CommentListComponent } from './comment-list.component';
 
-describe('CommentSectionComponent', () => {
-  let component: CommentSectionComponent;
-  let fixture: ComponentFixture<CommentSectionComponent>;
+describe('CommentListComponent', () => {
+  let component: CommentListComponent;
+  let fixture: ComponentFixture<CommentListComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ CommentSectionComponent ],
+      declarations: [CommentListComponent],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CommentSectionComponent);
+    fixture = TestBed.createComponent(CommentListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
