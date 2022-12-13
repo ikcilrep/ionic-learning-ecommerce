@@ -1,9 +1,10 @@
 <ion-list>
     <ion-item>
         <ion-label position="stacked">Opinia</ion-label>
-        <ion-textarea placeholder="Daj znać, co myślisz o tym produkcie"></ion-textarea>
+        <ion-textarea required="true" placeholder="Daj znać, co myślisz o tym produkcie"
+            [(ngModel)]="commentText"></ion-textarea>
     </ion-item>
-    <ion-button slot="end">
+    <ion-button slot="end" (click)="postComment()">
         Opublikuj
         <ion-icon slot="end" name="send"></ion-icon>
     </ion-button>

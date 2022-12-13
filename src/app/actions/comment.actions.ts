@@ -1,6 +1,18 @@
 import { createAction, props } from '@ngrx/store';
 import ProductComment from '../models/product-comment.model';
 
+export const postComment = createAction(
+  '[Comment] Post Comment',
+  props<{ comment: ProductComment }>());
+
+export const postCommentSuccess = createAction(
+  '[Comment] Post Comment Success',
+  props<{ comment: ProductComment }>());
+
+export const postCommentFailure = createAction(
+  '[Comment] Post Comment Failure',
+  props<{ error: any }>());
+
 export const loadComments = createAction(
   '[Comment] Load Comments', props<{ productId: number }>()
 );

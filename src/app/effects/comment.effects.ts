@@ -23,6 +23,25 @@ export class CommentEffects {
     );
   });
 
+  postComment$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(CommentActions.postComment),
+      switchMap(async (action) => {
+        try {
+          const response = await axios.post(`${serverAddress}/api/comments`,
+            // eslint-disable-next-line @typescript-eslint/naming-convention
+            action.comment, { headers: { 'Content-Type': 'application/json' } });
+          if (response.status !== 200) {
+            return CommentActions.postCommentFailure(response.data);
+          }
+          return CommentActions.postCommentSuccess({ comment: response.data });
+        } catch (error) {
+          return CommentActions.postCommentFailure(error);
+        }
+      })
+    );
+  });
+
 
   constructor(private actions$: Actions) { }
 }

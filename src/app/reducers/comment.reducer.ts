@@ -15,10 +15,10 @@ export const initialState: State = {
 export const reducer = createReducer(
   initialState,
 
-  on(CommentActions.loadComments, state => state),
   on(CommentActions.loadCommentsSuccess, (state, action) => ({
     comments: [...state.comments.filter(comment => comment.productId !== action.productId), ...action.comments]
   })),
   on(CommentActions.loadCommentsFailure, (state, _action) => state),
-
+  on(CommentActions.postCommentSuccess, (state, action) => ({ comments: [...state.comments, action.comment] })),
+  on(CommentActions.postCommentFailure, (state, _action) => state),
 );

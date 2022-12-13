@@ -28,7 +28,7 @@
         <ion-button (click)="addToCart()">
             Dodaj do koszyka
         </ion-button>
-        <app-comment-form></app-comment-form>
+        <app-comment-form [productId]="product.id"></app-comment-form>
         <app-comment-list [productId]="product.id"></app-comment-list>
     </div>
 </ion-content>
