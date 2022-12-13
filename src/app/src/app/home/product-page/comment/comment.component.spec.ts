@@ -5,7 +5,7 @@ import ProductComment from 'src/app/models/product-comment.model';
 
 import { CommentComponent } from './comment.component';
 
-describe('CommentContentComponent', () => {
+describe('CommentComponent', () => {
   let component: CommentComponent;
   let fixture: ComponentFixture<CommentComponent>;
   const comment: ProductComment = db.comments[0];
