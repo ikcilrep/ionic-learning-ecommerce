@@ -3,20 +3,20 @@ import { IonicModule } from '@ionic/angular';
 import * as db from 'src/app/db';
 import ProductComment from 'src/app/models/product-comment.model';
 
-import { CommentContentComponent } from './comment-content.component';
+import { CommentComponent } from './comment.component';
 
 describe('CommentContentComponent', () => {
-  let component: CommentContentComponent;
-  let fixture: ComponentFixture<CommentContentComponent>;
+  let component: CommentComponent;
+  let fixture: ComponentFixture<CommentComponent>;
   const comment: ProductComment = db.comments[0];
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [CommentContentComponent],
+      declarations: [CommentComponent],
       imports: [IonicModule.forRoot()],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(CommentContentComponent);
+    fixture = TestBed.createComponent(CommentComponent);
     component = fixture.componentInstance;
     component.comment = db.comments[0];
     fixture.detectChanges();
