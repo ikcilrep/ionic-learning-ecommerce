@@ -4,9 +4,9 @@ import { selectCommentState } from './comment.selectors';
 describe('Comment Selectors', () => {
   it('should select the feature state', () => {
     const result = selectCommentState({
-      [fromComment.commentFeatureKey]: {}
+      [fromComment.commentFeatureKey]: fromComment.initialState
     });
 
-    expect(result).toEqual({});
+    expect(result).toEqual(fromComment.initialState);
   });
 });

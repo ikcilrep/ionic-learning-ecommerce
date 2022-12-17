@@ -17,8 +17,6 @@ import { CartEffects } from './effects/cart.effects';
 import { LoginEffects } from './effects/login.effects';
 import { CommentEffects } from './effects/comment.effects';
 
-export const serverAddress = 'https://forlearningforselfmaker.azurewebsites.net';
-
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, IonicStorageModule.forRoot(), FormsModule,

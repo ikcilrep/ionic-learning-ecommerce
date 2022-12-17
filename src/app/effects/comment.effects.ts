@@ -4,7 +4,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { switchMap } from 'rxjs/operators';
 import * as CommentActions from '../actions/comment.actions';
 import axios from 'axios';
-import { serverAddress } from '../app.module';
+import { serverAddress } from 'src/app-config';
 
 @Injectable()
 export class CommentEffects {
@@ -41,7 +41,6 @@ export class CommentEffects {
       })
     );
   });
-
 
   constructor(private actions$: Actions) { }
 }
