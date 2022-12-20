@@ -82,4 +82,55 @@ describe('Comment Reducer', () => {
       expect(result.comments).toEqual(jasmine.arrayWithExactContents(existingComments));
     });
   });
+
+  describe('postCommentSuccess', () => {
+    const productId = 0;
+    const existingComments = [
+      { id: '0', userId: 2, productId, text: 'Testing comment 1', createdAt: undefined },
+      { id: '1', userId: 3, productId, text: 'Testing comment 2', createdAt: undefined },
+    ];
+    const newComment = { id: '2', userId: 4, productId, text: 'Testing comment 3', createdAt: undefined };
+
+    it('should return a new comments instance', () => {
+      const result = reducer({
+        comments: existingComments
+      }, CommentActions.postCommentSuccess({
+        comment: newComment
+      }));
+
+      expect(result.comments).not.toBe(existingComments);
+    });
+
+    it('should return an array containing all previous comments', () => {
+      const result = reducer({
+        comments: existingComments
+      }, CommentActions.postCommentSuccess({
+        comment: newComment
+      }));
+
+      expect(result.comments).toEqual(jasmine.arrayContaining(existingComments));
+    });
+
+    it('should return an array containing the new comment', () => {
+      const result = reducer({
+        comments: existingComments
+      }, CommentActions.postCommentSuccess({
+        comment: newComment
+      }));
+
+      expect(result.comments).toContain(newComment);
+    });
+
+    it('should return an array with length increased by one', () => {
+      const result = reducer({
+        comments: existingComments
+      }, CommentActions.postCommentSuccess({
+        comment: newComment
+      }));
+
+      expect(result.comments.length).toBe(existingComments.length + 1);
+    });
+
+
+  });
 });
