@@ -42,7 +42,7 @@ describe('Comment Reducer', () => {
       expect(result.comments).not.toBe(existingComments);
     });
 
-    it('should return array containing all other products\' comments', () => {
+    it('should return an array containing all other products\' comments', () => {
       const result = reducer({
         comments: existingComments
       }, CommentActions.loadCommentsSuccess({
@@ -52,7 +52,7 @@ describe('Comment Reducer', () => {
       expect(result.comments).toEqual(jasmine.arrayContaining(otherProductsComments));
     });
 
-    it('should return array containing new product comments', () => {
+    it('should return an array containing new product comments', () => {
       const result = reducer({
         comments: existingComments
       }, CommentActions.loadCommentsSuccess({
@@ -62,14 +62,14 @@ describe('Comment Reducer', () => {
       expect(result.comments).toEqual(jasmine.arrayContaining(newProductComments));
     });
 
-    it('should return array containing old product comments', () => {
+    it('should return an array not containing old product comments', () => {
       const result = reducer({
         comments: existingComments
       }, CommentActions.loadCommentsSuccess({
         comments: newProductComments, productId
       }));
 
-      expect(result.comments).toEqual(jasmine.arrayContaining(productComments));
+      expect(result.comments).not.toEqual(jasmine.arrayContaining(productComments));
     });
 
     it('should not add repetetive comments', () => {
