@@ -1,4 +1,4 @@
-import { reducer, initialState, commentFeatureKey, State } from './comment.reducer';
+import { reducer, initialState, commentFeatureKey } from './comment.reducer';
 import * as CommentActions from 'src/app/actions/comment.actions';
 
 describe('Comment Reducer', () => {
@@ -127,10 +127,39 @@ describe('Comment Reducer', () => {
       }, CommentActions.postCommentSuccess({
         comment: newComment
       }));
-
       expect(result.comments.length).toBe(existingComments.length + 1);
     });
+  });
 
+  describe('postCommentFailure', () => {
+    const productId = 0;
+    const existingComments = [
+      { id: '0', userId: 2, productId, text: 'Testing comment 1', createdAt: undefined },
+      { id: '1', userId: 3, productId, text: 'Testing comment 2', createdAt: undefined },
+    ];
 
+    it('should return the state unchanged', () => {
+      const result = reducer({
+        comments: existingComments
+      }, CommentActions.postCommentFailure(undefined));
+
+      expect(result.comments).toEqual(existingComments);
+    });
+  });
+
+  describe('loadCommentFailure', () => {
+    const productId = 0;
+    const existingComments = [
+      { id: '0', userId: 2, productId, text: 'Testing comment 1', createdAt: undefined },
+      { id: '1', userId: 3, productId, text: 'Testing comment 2', createdAt: undefined },
+    ];
+
+    it('should return the state unchanged', () => {
+      const result = reducer({
+        comments: existingComments
+      }, CommentActions.loadCommentsFailure(undefined));
+
+      expect(result.comments).toEqual(existingComments);
+    });
   });
 });
