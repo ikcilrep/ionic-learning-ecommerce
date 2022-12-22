@@ -15,9 +15,12 @@ export class CommentEffects {
       switchMap(async (action) => {
         try {
           const response = await axios.get(`${serverAddress}/api/comments/${action.productId}`);
+          if (response.status !== 200) {
+            return CommentActions.loadCommentsFailure({ error: new Error(response.data) });
+          }
           return CommentActions.loadCommentsSuccess({ comments: response.data, productId: action.productId });
         } catch (error) {
-          return CommentActions.loadCommentsFailure(error);
+          return CommentActions.loadCommentsFailure({ error });
         }
       })
     );
@@ -32,11 +35,11 @@ export class CommentEffects {
             // eslint-disable-next-line @typescript-eslint/naming-convention
             action.comment, { headers: { 'Content-Type': 'application/json' } });
           if (response.status !== 200) {
-            return CommentActions.postCommentFailure(response.data);
+            return CommentActions.postCommentFailure({ error: new Error(response.data) });
           }
           return CommentActions.postCommentSuccess({ comment: response.data });
         } catch (error) {
-          return CommentActions.postCommentFailure(error);
+          return CommentActions.postCommentFailure({ error });
         }
       })
     );
