@@ -3,7 +3,7 @@ import { provideMockActions } from '@ngrx/effects/testing';
 import axios from 'axios';
 import { Observable, of } from 'rxjs';
 import { serverAddress } from 'src/app-config';
-import { loadComments, loadCommentsFailure, loadCommentsSuccess } from '../actions/comment.actions';
+import { loadComments, loadCommentsFailure, loadCommentsSuccess, postComment, postCommentFailure, postCommentSuccess } from '../actions/comment.actions';
 
 import { CommentEffects } from './comment.effects';
 
@@ -72,6 +72,47 @@ describe('CommentEffects', () => {
       axiosGetSpy.and.throwError(errorMessage);
       effects.loadComments$.subscribe((action) => {
         expect(action).toEqual(loadCommentsFailure({ error: new Error(errorMessage) }));
+        done();
+      });
+    });
+  });
+
+  describe('postComment', () => {
+    const newComment = { id: '2', userId: 4, productId, text: 'Testing comment 4', createdAt: undefined };
+    const returnedComment = { id: '2', userId: 4, productId, text: 'Testing comment 4', createdAt: new Date('2022-12-22') };
+
+    it('should return postCommentSuccess with the returned comment, if the request was successful', (done: DoneFn) => {
+      actions$ = of(postComment({ comment: newComment }));
+
+      axiosPostSpy.and.returnValue({ data: returnedComment, status: 200 });
+      effects.postComment$.subscribe((action) => {
+        expect(action).toEqual(postCommentSuccess({
+          comment: returnedComment,
+        }));
+        done();
+      });
+    });
+
+    it('should return postCommentFailure, if the request was unsuccessful', (done: DoneFn) => {
+      actions$ = of(postComment({ comment: newComment }));
+      const errorMessage = 'Some error';
+      axiosPostSpy.and.returnValue({ data: errorMessage, status: 404 });
+      effects.postComment$.subscribe((action) => {
+        expect(action).toEqual(postCommentFailure({
+          error: new Error(errorMessage),
+        }));
+        done();
+      });
+    });
+
+    it('should return postCommentFailure, if the request threw an error', (done: DoneFn) => {
+      actions$ = of(postComment({ comment: newComment }));
+      const errorMessage = 'Some error';
+      axiosPostSpy.and.throwError(errorMessage);
+      effects.postComment$.subscribe((action) => {
+        expect(action).toEqual(postCommentFailure({
+          error: new Error(errorMessage),
+        }));
         done();
       });
     });
