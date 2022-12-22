@@ -2,8 +2,10 @@ import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import axios from 'axios';
 import { Observable, of } from 'rxjs';
-import { serverAddress } from 'src/app-config';
-import { loadComments, loadCommentsFailure, loadCommentsSuccess, postComment, postCommentFailure, postCommentSuccess } from '../actions/comment.actions';
+import {
+  loadComments, loadCommentsFailure,
+  loadCommentsSuccess, postComment, postCommentFailure, postCommentSuccess
+} from '../actions/comment.actions';
 
 import { CommentEffects } from './comment.effects';
 
@@ -36,14 +38,6 @@ describe('CommentEffects', () => {
   });
 
   describe('loadComments', () => {
-    it('should make a get request to the api with the product id', (done: DoneFn) => {
-      actions$ = of(loadComments({ productId }));
-      effects.loadComments$.subscribe(() => {
-        expect(axiosGetSpy).toHaveBeenCalledOnceWith(`${serverAddress}/api/comments/${productId}`);
-        done();
-      });
-    });
-
     it('should return loadCommentsSuccess with returned comments, if the request was successful', (done: DoneFn) => {
       actions$ = of(loadComments({ productId }));
       axiosGetSpy.and.returnValue({ data: comments, status: 200 });
